@@ -58,7 +58,18 @@ class Visitor():
             print(f"Visitor {self._name} is riding {attraction._name}")
         else: 
             print(f"Visitor {self._name} cannot ride this.")
-        
+
+class Manager(Staff): 
+    def __init__(self, name, role): 
+        super().__init__(name, role)
+        self._team = []
+
+    def addStaff(self, staff): 
+        self._team.append(f"Name: {staff._name}, Role: {staff._role}")
+    
+    def getTeamSum(self): 
+        print(self._team)
+
 dragonCoaster = ThrillRide("Dragon Coaster", 20, 140)
 merryGoRound = FamilyRide("Merry-Go-Round", 30, 4)
 daniel = Visitor("Daniel", 3, 130)
@@ -66,3 +77,10 @@ daniel.ride(dragonCoaster)
 daniel.ride(merryGoRound)
 dragonCoaster.start()
 merryGoRound.start()
+
+parthiv = Staff("Parthiv", "Operator")
+vahid = Staff("Vahid", "Gamer")
+ali = Manager("Ali", "Manager")
+ali.addStaff(parthiv)
+ali.addStaff(vahid)
+ali.getTeamSum()
